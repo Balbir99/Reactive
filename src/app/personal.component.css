@@ -1,0 +1,14 @@
+.box{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 450px; 
+    border: 2px;
+    font-size: 150%;
+      
+}
+input.ng-touched.ng-invalid{
+    border:1px solid red;
+    box-shadow: 0 0 13px inset rgba(red, green, blue, alpha);
+}

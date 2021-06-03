@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="box d-flex justify-content-center mt-5">
+    <form [formGroup]="users" (ngSubmit)="onSubmit()" pt-5>
+      <div class="row">
+        <div class="col-4">
+          <label> Name:</label>
+        </div>
+        <div class="col-11">
+          <input formControlName="name" placeholder="Your name" />
+        </div>
+
+        <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
+          <div class="text-danger" [hidden]="!name?.errors?.pattern">
+            <small>
+              No special characters and integers allowed.</small
+            >
+          </div>
+          <div
+            class="text-danger"
+            [hidden]="!name?.errors?.maxlength"
+          >
+            <small>
+              Max length allowed is
+              {{ name?.errors?.maxlength?.requiredLength }}</small
+            >
+          </div>
+          <div class="text-danger" [hidden]="!name?.errors?.required">
+            <small> First Name is required</small>
+          </div>
+          <div
+            class="text-danger"
+            [hidden]="!name?.errors?.minlength"
+          >
+            <small> Min Length is 2</small>
+          </div>
+          <!---   <div *ngIf="users.get('name').errors['notAllowedName']">
+            Not Allowed name
+          </div>-->
+          <div
+            class="text-danger"
+            [hidden]="!name?.errors?.notAllowedName"
+          >
+            <small> notAllowedName</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label> Email:</label>
+        </div>
+        <div class="col-11">
+          <input formControlName="email" placeholder="Your email" />
+          <!---  <small class="text-danger" *ngIf="!users.get('email').valid && users.get('email').touched">Please enter valid email</small>-->
+        </div>
+        <div
+          *ngIf="!email?.valid && (email?.dirty || email?.touched)"
+        >
+          <div
+            class="text-danger"
+            [hidden]="!email?.errors?.emailDomain"
+          >
+            <small>Specific email is required</small>
+          </div>
+          <div
+            class="text-danger"
+            [hidden]="!email?.errors?.required"
+          >
+            <small> Email is required</small>
+          </div>
+          <div
+            class="text-danger"
+            [hidden]="!email?.errors?.emailNotAllowed"
+          >
+            <small> Email is not allowed</small>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <label> Mobile:</label>
+        </div>
+        <div class="col-11">
+          <input formControlName="phone" placeholder="Your mobile" />
+        </div>
+        <div
+          *ngIf="!phone?.valid && (phone?.dirty || phone?.touched)"
+        >
+          <div
+            class="text-danger"
+            [hidden]="!phone?.errors?.required"
+          >
+            <small>Mobile number is required</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4">
+          <label> Resume:</label>
+        </div>
+        <div class="col-11">
+          <input
+            type="file"
+            formControlName="resume"
+            placeholder="Upload resume"
+          />
+        </div>
+        <div
+          *ngIf="!resume?.valid && (resume?.dirty || resume?.touched)"
+        >
+          <div
+            class="text-danger"
+            [hidden]="!resume?.errors?.required"
+          >
+            <small>Resume is required</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <button
+          type="submit"
+          class="btn btn-info mt-3 text-center"
+          role="button"
+          aria-pressed="true"
+        >
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+  <!--{{ users.value | json }}-->
+</div>
