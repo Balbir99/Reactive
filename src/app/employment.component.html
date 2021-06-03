@@ -1,0 +1,644 @@
+<div class="container">
+  <div class="box d-flex justify-content-center mt-5">
+    <form pt-5 [formGroup]="employment">
+      <div class="row">
+        <label> Current Designation:</label>
+        <div class="col-11">
+          <input
+            formControlName="designation"
+            placeholder="Current Designation"
+          />
+        </div>
+      </div>
+      <div
+        *ngIf="
+          !designation?.valid &&
+          (designation?.dirty || designation?.touched)
+        "
+      >
+        <div
+          class="text-danger"
+          [hidden]="!designation?.errors?.required"
+        >
+          <small>Current Designation is required</small>
+        </div>
+      </div>
+      <div class="row">
+        <label> Current Company:</label>
+        <div class="col-11">
+          <input
+            formControlName="current_company"
+            placeholder="Currently working"
+          />
+        </div>
+      </div>
+      <div
+        *ngIf="
+          !current_company?.valid &&
+          (current_company?.dirty || current_company?.touched)
+        "
+      >
+        <div
+          class="text-danger"
+          [hidden]="!current_company?.errors?.required"
+        >
+          <small>Current Designation is required</small>
+        </div>
+      </div>
+      <div class="row" formGroupName="salary">
+        <label> Annual Salary:</label>
+        <div class="col-11">
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Lakh</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="In_lakh"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="1-2">1-2</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="2-3">2-3</a>
+              </li>
+              <li role="menuitem">
+                <a value="3-4">3-4 </a>
+              </li>
+            </ul>
+          </div>
+          <!--  <div
+            *ngIf="
+              !In_lakh.valid && (In_lakh.dirty || In_lakh?.touched)
+            "
+          >
+            <div
+              class="text-danger"
+              [hidden]="!In_lakh.?.errors?.required"
+            >
+              <small>Salaryis required</small>
+            </div>
+          </div>-->
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Thousand</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="In_thousand"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="10 - 20">10-20</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="20 - 30">20-30</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="30 - 40">30-40 </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" formGroupName="working_since">
+        <label> Working Since:</label>
+        <div class="col-11">
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Year</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="year"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2021</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2020</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2019 </a>
+              </li>
+            </ul>
+          </div>
+          &nbsp;
+
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Month</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="month"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="January">Jan</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="Feburary">Feb</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="march">March </a>
+              </li>
+            </ul>
+          </div>
+          &nbsp;&nbsp; To
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Present</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="to"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2021</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2020</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2019 </a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2018</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">2017</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <label> Current City:</label>
+        <div class="col-11">
+          <input formControlName="city" placeholder="Current City " />
+        </div>
+      </div>
+      <div class="row">
+        <label> Duration of Notice Period:</label>
+        <div class="col-11">
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Month</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="notice_period"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="15 days">15 days</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="Month">1 Month</a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="2 month">2 Month </a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="3 month">3 Month </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <label> Skills:</label>
+        <div class="col-11">
+          <ng-container
+            formArrayName="Specialization"
+            *ngFor="
+              let skill of specializationArr().controls;
+              let i = index
+            "
+          >
+            <input
+              [formControlName]="i"
+              placeholder="Enter your Specialization"
+            />
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="col-11">
+        <a href="javascript: void(0);" (click)="OnaddSkills()">
+          +add skills</a
+        >
+      </div>
+      <!--   <div class="row">
+        <label> Company Industry:</label>
+        <div class="col-11">
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">Industry</button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="industry"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="IT_service"
+                  >IT Service</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="call_center"
+                  >Call center</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="Research"
+                  >Research
+                </a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="nano technology"
+                  >Nano Technology
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>-->
+      <div class="row">
+        <div class="form-group industry">
+          <label for="industry">Company Industry</label>
+          <div class="col-5">
+            <select
+              class="form-control"
+              id="industry"
+              formControlName="industry"
+            >
+              <option>Product Development</option>
+              <option>Aerospace Industry</option>
+              <option>Agricultural Industry</option>
+              <option>Computer Industry</option>
+              <option>Construction Industry</option>
+              <option>Education Industry</option>
+              <option>Electronics Industry</option>
+              <option>Entertainment Industry</option>
+              <option>Food Industry</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="
+          !industry?.valid && (industry?.dirty || industry?.touched)
+        "
+      >
+        <div
+          class="text-danger"
+          [hidden]="!industry?.errors?.required"
+        >
+          <small>Industry is required</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <label> Functional area:</label>
+        <div class="col-11">
+          <div class="btn-group" dropdown>
+            <button type="button" class="btn">
+              Select department where you work in
+            </button>
+            <button
+              id="button-split"
+              type="button"
+              dropdownToggle
+              class="
+                btn btn-danger
+                dropdown-toggle dropdown-toggle-split
+              "
+              aria-controls="dropdown-split"
+            >
+              <span class="caret"></span>
+              <span class="sr-only">Split button!</span>
+            </button>
+            <ul
+              id="dropdown-split"
+              *dropdownMenu
+              class="dropdown-menu"
+              formControlName="functional_Area"
+              role="menu"
+              aria-labelledby="button-split"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" value="IT_software"
+                  >IT Sofware</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="accountant"
+                  >Accountant</a
+                >
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" value="Buiness_analyst"
+                  >Buisness Analyst
+                </a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item">Trainee </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-11">
+          <a href="javascript: void(0);" (click)="add()">
+            +add more employment</a
+          >
+        </div>
+      </div>
+      <div [ngClass]="myclasses">
+        <hr />
+
+        <h3>Previous Employment</h3>
+        <div class="row">
+          <label> Last Designation:</label>
+          <div class="col-11">
+            <input placeholder="Last job tittle" />
+          </div>
+        </div>
+        <div class="row">
+          <label> Last Company:</label>
+          <div class="col-11">
+            <input placeholder="Name of Organization " />
+          </div>
+        </div>
+        <div class="row">
+          <label> Working Since:</label>
+          <div class="col-11">
+            <div class="btn-group" dropdown>
+              <button type="button" class="btn">Year</button>
+              <button
+                id="button-split"
+                type="button"
+                dropdownToggle
+                class="
+                  btn btn-danger
+                  dropdown-toggle dropdown-toggle-split
+                "
+                aria-controls="dropdown-split"
+              >
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+              </button>
+              <ul
+                id="dropdown-split"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-split"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2021</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2020</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2019 </a>
+                </li>
+              </ul>
+            </div>
+            &nbsp;
+
+            <div class="btn-group" dropdown>
+              <button type="button" class="btn">Month</button>
+              <button
+                id="button-split"
+                type="button"
+                dropdownToggle
+                class="
+                  btn btn-danger
+                  dropdown-toggle dropdown-toggle-split
+                "
+                aria-controls="dropdown-split"
+              >
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+              </button>
+              <ul
+                id="dropdown-split"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-split"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">Jan</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">Feb</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">March </a>
+                </li>
+              </ul>
+            </div>
+            &nbsp;&nbsp; To
+            <div class="btn-group" dropdown>
+              <button type="button" class="btn">Year</button>
+              <button
+                id="button-split"
+                type="button"
+                dropdownToggle
+                class="
+                  btn btn-danger
+                  dropdown-toggle dropdown-toggle-split
+                "
+                aria-controls="dropdown-split"
+              >
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+              </button>
+              <ul
+                id="dropdown-split"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-split"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2021</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2020</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2019 </a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2018</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">2017</a>
+                </li>
+              </ul>
+            </div>
+            &nbsp;
+            <div class="btn-group" dropdown>
+              <button type="button" class="btn">Month</button>
+              <button
+                id="button-split"
+                type="button"
+                dropdownToggle
+                class="
+                  btn btn-danger
+                  dropdown-toggle dropdown-toggle-split
+                "
+                aria-controls="dropdown-split"
+              >
+                <span class="caret"></span>
+                <span class="sr-only">Split button!</span>
+              </button>
+              <ul
+                id="dropdown-split"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu"
+                aria-labelledby="button-split"
+              >
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">Jan</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">Feb</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">March </a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">April</a>
+                </li>
+                <li role="menuitem">
+                  <a class="dropdown-item" href="#">May</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 mt-3">
+        <a
+          class="btn btn-info mt-3 text-center"
+          role="button"
+          aria-pressed="true"
+          >Continue</a
+        >
+      </div>
+    </form>
+  </div>
+</div>
